@@ -1,12 +1,12 @@
 ﻿{
-  "ID": "0F7F8402-0169-4E21-99ED-1BD1B6DEFFFA",
+  "ID": "E2D2C23B084D41D1B8860EC79D62CAH6",
   "ActionKeyword": "rider",
   "Name": "RiderNavigator",
   "Description": "A simple plugin to search .Net project",
   "Author": "Elan",
-  "Version": "1.0.2",
+  "Version": "1.0.3",
   "Language": "csharp",
-  "Website": "your website~~",
+  "Website": "https://github.com/xinxianwu/DotNetNavigator",
   "IcoPath": "rider.ico",
   "ExecuteFileName": "RiderNavigator.WoxPlugin.dll"
 }
