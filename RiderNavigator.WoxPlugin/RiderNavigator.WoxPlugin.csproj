@@ -42,6 +42,9 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="DirectoryNode.cs" />
+        <Compile Include="Dtos\DirectoryDto.cs" />
+        <Compile Include="Extensions\StringExtensions.cs" />
         <Compile Include="RiderNavigator.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>

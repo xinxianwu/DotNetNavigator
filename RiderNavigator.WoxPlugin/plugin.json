@@ -1,10 +1,10 @@
 ﻿{
   "ID": "0F7F8402-0169-4E21-99ED-1BD1B6DEFFFA",
-  "ActionKeyword": "rider nav",
+  "ActionKeyword": "rider",
   "Name": "RiderNavigator",
   "Description": "A simple plugin to search .Net project",
   "Author": "Elan",
-  "Version": "1.0.1",
+  "Version": "1.0.2",
   "Language": "csharp",
   "Website": "your website~~",
   "IcoPath": "rider.ico",

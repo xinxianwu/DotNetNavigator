@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using RiderNavigator.WoxPlugin.Dtos;
+using RiderNavigator.WoxPlugin.Extensions;
 using Wox.Plugin;
 
 namespace RiderNavigator.WoxPlugin
@@ -7,28 +12,80 @@ namespace RiderNavigator.WoxPlugin
     {
         public List<Result> Query(Query query)
         {
-            return new List<Result>()
+            try
             {
-                new Result
+                return SearchRiderProject()
+                    .Where(x => string.IsNullOrEmpty(query.Search) || query.Search.IgnoreCaseContains(x.ProjectName))
+                    .Select(x => new Result()
+                    {
+                        Title = x.ProjectName,
+                        SubTitle = x.FullPath,
+                        IcoPath = "rider.ico",
+                        Action = context =>
+                        {
+                            var process = new Process()
+                            {
+                                StartInfo = new ProcessStartInfo()
+                                {
+                                    FileName = "rider",
+                                    Arguments = x.FullPath,
+                                    UseShellExecute = true
+                                } 
+                            };
+
+                            process.Start();
+
+                            return true;
+                        }
+                    })
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                return new List<Result>()
                 {
-                    Title = "Project1",
-                    SubTitle = "Path1",
-                    IcoPath = "rider.ico",
-                    Action = context => true
-                },
-                new Result
-                {
-                    Title = "Project1",
-                    SubTitle = "Path1",
-                    IcoPath = "rider.ico",
-                    Action = context => true
-                },
-            };
+                    new Result()
+                    {
+                        Title = "Internal Error",
+                        SubTitle = e.ToString(),
+                        IcoPath = "rider.ico",
+                        Action = context => true
+                    }
+                };
+            }
         }
 
         public void Init(PluginInitContext context)
         {
-            // throw new System.NotImplementedException();
+        }
+
+        private static List<DirectoryDto> SearchRiderProject()
+        {
+            var list1 = new DirectoryNode(@"c:\Users")
+                .Next()
+                .Next("RiderProjects")
+                .GetAllDirectoryPath()
+                .ToList();
+
+            var list2 = new DirectoryNode(@"c:\Users")
+                .Next()
+                .Next("source")
+                .GetAllDirectoryPath()
+                .ToList();
+
+            var list3 = new DirectoryNode(@"c:\Users")
+                .Next()
+                .Next("source")
+                .Next("repos")
+                .GetAllDirectoryPath()
+                .ToList();
+
+            var cSharpProjects = new List<DirectoryDto>();
+            cSharpProjects.AddRange(list1);
+            cSharpProjects.AddRange(list2);
+            cSharpProjects.AddRange(list3);
+
+            return cSharpProjects;
         }
     }
 }
