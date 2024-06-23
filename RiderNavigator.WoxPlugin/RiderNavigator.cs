@@ -61,20 +61,13 @@ namespace RiderNavigator.WoxPlugin
 
         private static List<DirectoryDto> SearchRiderProject()
         {
-            var list1 = new DirectoryNode(@"c:\Users")
-                .Next()
+            var userProfileFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var list1 = new DirectoryNode(userProfileFolder)
                 .Next("RiderProjects")
                 .GetAllDirectoryPath()
                 .ToList();
 
-            var list2 = new DirectoryNode(@"c:\Users")
-                .Next()
-                .Next("source")
-                .GetAllDirectoryPath()
-                .ToList();
-
-            var list3 = new DirectoryNode(@"c:\Users")
-                .Next()
+            var list2 = new DirectoryNode(userProfileFolder)
                 .Next("source")
                 .Next("repos")
                 .GetAllDirectoryPath()
@@ -83,7 +76,6 @@ namespace RiderNavigator.WoxPlugin
             var cSharpProjects = new List<DirectoryDto>();
             cSharpProjects.AddRange(list1);
             cSharpProjects.AddRange(list2);
-            cSharpProjects.AddRange(list3);
 
             return cSharpProjects;
         }
