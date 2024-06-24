@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using RiderNavigator.WoxPlugin.Dtos;
+using RiderNavigator.WoxPlugin.Logger;
 
 namespace RiderNavigator.WoxPlugin
 {
@@ -65,31 +65,13 @@ namespace RiderNavigator.WoxPlugin
             }
             catch (UnauthorizedAccessException)
             {
-                WriteEventLog($"Access denied to directory: {directoryInfo.FullName}");
+                DotNetNavigatorLogger.Info($"Access denied to directory: {directoryInfo.FullName}");
                 return Enumerable.Empty<DirectoryInfo>();
             }
             catch (Exception ex)
             {
-                WriteEventLog($"Error accessing directory: {directoryInfo.FullName}. Exception: {ex.Message}");
+                DotNetNavigatorLogger.Info($"Info accessing directory: {directoryInfo.FullName}. Exception: {ex.Message}");
                 return Enumerable.Empty<DirectoryInfo>();
-            }
-        }
-
-        private static void WriteEventLog(string message)
-        {
-            try
-            {
-                using (var eventLog = new EventLog("Application")) 
-                {
-                    eventLog.Source = "Application"; 
-                    eventLog.WriteEntry(message, EventLogEntryType.Information);
-
-                    Console.WriteLine(message);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
             }
         }
     }
