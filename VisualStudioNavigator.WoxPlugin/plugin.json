@@ -1,0 +1,12 @@
+﻿{
+  "ID": "E2D2C23B034D41D1B4860EC79D62CAH6",
+  "ActionKeyword": "vs",
+  "Name": "VisualStudioNavigator",
+  "Description": "A simple plugin to search .Net project",
+  "Author": "Elan",
+  "Version": "1.0.0",
+  "Language": "csharp",
+  "Website": "https://github.com/xinxianwu/DotNetNavigator",
+  "IcoPath": "VisualStudio.png",
+  "ExecuteFileName": "VisualStudioNavigator.WoxPlugin.dll"
+}

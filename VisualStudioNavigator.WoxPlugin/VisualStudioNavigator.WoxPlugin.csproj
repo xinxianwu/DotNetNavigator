@@ -5,11 +5,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{C9E5C286-55E7-49FB-AF32-ADA1407C98DC}</ProjectGuid>
+        <ProjectGuid>{DA239316-6F62-48E9-B850-03BC7B602AE8}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Navigator.Common</RootNamespace>
-        <AssemblyName>Navigator.Common</AssemblyName>
+        <RootNamespace>VisualStudioNavigator.WoxPlugin</RootNamespace>
+        <AssemblyName>VisualStudioNavigator.WoxPlugin</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -42,24 +42,28 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Dtos\DirectoryDto.cs" />
-        <Compile Include="Exceptions\NavigatorException.cs" />
-        <Compile Include="Extensions\StringExtensions.cs" />
-        <Compile Include="Launchers\RiderLauncher.cs" />
-        <Compile Include="Launchers\VisualStudioCodeLauncher.cs" />
-        <Compile Include="Launchers\VisualStudioLauncher.cs" />
-        <Compile Include="Logger\DotNetNavigatorLogger.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="Searchers\ISearcher.cs" />
-        <Compile Include="Searchers\Searcher.cs" />
+        <Compile Include="VisualStudioNavigator.cs" />
     </ItemGroup>
     <ItemGroup>
+      <None Include="App.config" />
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\EverythingSharp\EverythingSharp.csproj">
-        <Project>{6055b099-55e3-47de-a4fc-932874e1d367}</Project>
-        <Name>EverythingSharp</Name>
+      <Content Include="close.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="plugin.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="VisualStudio.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Navigator.Common\Navigator.Common.csproj">
+        <Project>{c9e5c286-55e7-49fb-af32-ada1407c98dc}</Project>
+        <Name>Navigator.Common</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
@@ -70,5 +74,18 @@
     <Target Name="AfterBuild">
     </Target>
     -->
+    <PropertyGroup>
+        <ZipOutputFile>$(OutputPath)\VisualStudioNavigator.WoxPlugin.wox</ZipOutputFile>
+    </PropertyGroup>
+    <Target Name="AfterBuild">
+        <!-- 確保目標資料夾存在 -->
+        <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')" />
+
+        <!-- 壓縮檔案 -->
+        <Exec Command="powershell Compress-Archive -Path '$(OutputPath)\EverythingSharp.pdb', '$(OutputPath)\EverythingSharp.dll', '$(OutputPath)\Everything.dll', '$(OutputPath)\Navigator.Common.dll', '$(OutputPath)\Navigator.Common.pdb', '$(OutputPath)\VisualStudioNavigator.WoxPlugin.dll', '$(OutputPath)\VisualStudioNavigator.WoxPlugin.pdb', '$(OutputPath)\plugin.json', '$(OutputPath)\VisualStudio.png', '$(OutputPath)\close.png' -DestinationPath '$(ZipOutputFile).zip'" />
+
+        <!-- 修改副檔名 -->
+        <Move SourceFiles="$(ZipOutputFile).zip" DestinationFiles="$(ZipOutputFile)" />
+    </Target>
 
 </Project>

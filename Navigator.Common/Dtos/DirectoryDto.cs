@@ -55,5 +55,16 @@ namespace Navigator.Common.Dtos
                 Action = context => new VisualStudioCodeLauncher(DirectoryPath).Launch()
             };
         }
+
+        public Result ToVisualStudioResult()
+        {
+            return new Result
+            {
+                Title = ProjectName,
+                SubTitle = SolutionPath,
+                IcoPath = "VisualStudio.png",
+                Action = context => new VisualStudioLauncher(SolutionPath).Launch()
+            };
+        }
     }
 }
