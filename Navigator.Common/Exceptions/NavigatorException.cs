@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RiderNavigator.WoxPlugin.Exceptions
+namespace Navigator.Common.Exceptions
 {
     public class NavigatorException : Exception
     {

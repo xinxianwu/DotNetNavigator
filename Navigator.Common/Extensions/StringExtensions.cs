@@ -1,4 +1,4 @@
-﻿namespace VisualStudioCodeNavigator.WoxPlugin.Extensions
+﻿namespace Navigator.Common.Extensions
 {
     public static class StringExtensions
     {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using RiderNavigator.WoxPlugin.Exceptions;
+using Navigator.Common.Exceptions;
 
-namespace RiderNavigator.WoxPlugin.Launchers
+namespace Navigator.Common.Launchers
 {
     public class RiderLauncher
     {

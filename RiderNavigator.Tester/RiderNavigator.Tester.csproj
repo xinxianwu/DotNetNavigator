@@ -51,6 +51,10 @@
         <Project>{6055b099-55e3-47de-a4fc-932874e1d367}</Project>
         <Name>EverythingSharp</Name>
       </ProjectReference>
+      <ProjectReference Include="..\Navigator.Common\Navigator.Common.csproj">
+        <Project>{c9e5c286-55e7-49fb-af32-ada1407c98dc}</Project>
+        <Name>Navigator.Common</Name>
+      </ProjectReference>
       <ProjectReference Include="..\VisualStudioCodeNavigator.WoxPlugin\VisualStudioCodeNavigator.WoxPlugin.csproj">
         <Project>{fa5d15d4-5421-4614-bff4-89da9e1386c7}</Project>
         <Name>VisualStudioCodeNavigator.WoxPlugin</Name>

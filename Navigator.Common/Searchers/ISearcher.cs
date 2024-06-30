@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using VisualStudioCodeNavigator.WoxPlugin.Dtos;
+using Navigator.Common.Dtos;
 
-namespace VisualStudioCodeNavigator.WoxPlugin.Searchers
+namespace Navigator.Common.Searchers
 {
     internal interface ISearcher
     {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using VisualStudioCodeNavigator.WoxPlugin.Exceptions;
+using Navigator.Common.Exceptions;
 
-namespace VisualStudioCodeNavigator.WoxPlugin.Launchers
+namespace Navigator.Common.Launchers
 {
     public class VisualStudioCodeLauncher
     {

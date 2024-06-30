@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VisualStudioCodeNavigator.WoxPlugin.Exceptions;
-using VisualStudioCodeNavigator.WoxPlugin.Logger;
-using VisualStudioCodeNavigator.WoxPlugin.Searchers;
+using Navigator.Common.Exceptions;
+using Navigator.Common.Logger;
+using Navigator.Common.Searchers;
 using Wox.Plugin;
 
 namespace VisualStudioCodeNavigator.WoxPlugin

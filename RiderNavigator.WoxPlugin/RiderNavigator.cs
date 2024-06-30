@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RiderNavigator.WoxPlugin.Exceptions;
-using RiderNavigator.WoxPlugin.Logger;
-using RiderNavigator.WoxPlugin.Searchers;
+using Navigator.Common.Exceptions;
+using Navigator.Common.Logger;
+using Navigator.Common.Searchers;
 using Wox.Plugin;
 
 namespace RiderNavigator.WoxPlugin

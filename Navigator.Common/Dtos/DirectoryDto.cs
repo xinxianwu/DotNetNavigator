@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using System.IO;
-using VisualStudioCodeNavigator.WoxPlugin.Launchers;
+using Navigator.Common.Launchers;
 using Wox.Plugin;
 
-namespace VisualStudioCodeNavigator.WoxPlugin.Dtos
+namespace Navigator.Common.Dtos
 {
     [DebuggerDisplay("ProjectName: {ProjectName}, DirectoryPath: {DirectoryPath}, SolutionPath: {SolutionPath}")]
     public class DirectoryDto
@@ -32,6 +32,17 @@ namespace VisualStudioCodeNavigator.WoxPlugin.Dtos
 
         public DirectoryDto()
         {
+        }
+        
+        public Result ToRiderResult()
+        {
+            return new Result
+            {
+                Title = ProjectName,
+                SubTitle = SolutionPath,
+                IcoPath = "rider.ico",
+                Action = context => new RiderLauncher(SolutionPath).Launch()
+            };
         }
 
         public Result ToVisualStudioCodeResult()

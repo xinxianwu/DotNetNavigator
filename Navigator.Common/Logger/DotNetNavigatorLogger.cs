@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace RiderNavigator.WoxPlugin.Logger
+namespace Navigator.Common.Logger
 {
     public class DotNetNavigatorLogger
     {
