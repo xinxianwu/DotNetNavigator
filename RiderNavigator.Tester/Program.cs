@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using RiderNavigator.WoxPlugin.Searchers;
+using VisualStudioCodeNavigator.WoxPlugin.Searchers;
 
 namespace RiderNavigator.Tester
 {
@@ -12,8 +12,8 @@ namespace RiderNavigator.Tester
             var everythingSearcher = new Searcher();
             var everythingEntries = everythingSearcher.Find("betting");
             var enumerable = everythingEntries
-                .Select(x => x.ToRiderResult());
-
+                .Select(x => x.ToVisualStudioCodeResult());
+            
             enumerable.First().Action.Invoke(null);
             
 
